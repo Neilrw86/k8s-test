@@ -4,7 +4,7 @@ metadata:
   name: jellyfin-ingress
 spec:
   rules:
-  - host: jellyfin  # Or jellyfin.yourdomain.com if you have a local domain
+  - host: jellyfin.neilwylie.com  # Or jellyfin.yourdomain.com if you have a local domain
     http:
       paths:
       - path: /
