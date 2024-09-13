@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-uptime-kuma-ingress
+  namespace: observability  # Make sure this matches your service's namespace
+  annotations:
+    kubernetes.io/ingress.class: "public"  # Use the "public" ingress class
+spec:
+  rules:
+  - host: uptime-kuma.neilwylie.com  # Replace with your desired external hostname
+    http:
+      paths:
+      - path: /
+        pathType: Prefix 
+        backend:
+          service:
+            name: my-uptime-kuma
+            port: 
+              number: 3001  # Match the service's port
+
