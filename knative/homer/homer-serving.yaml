@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: homer-service 
+spec:
+  template:
+    spec:
+      containers:
+        - image: b4bz/homer:latest
+          name: homer
+          volumeMounts:
+            - name: share-configs-homer-www
+              mountPath: /www/assets
+      volumes:
+        - name: share-configs-homer-www
+          persistentVolumeClaim:
+            claimName: homer-pvc # You'll need to create this PVC separately
